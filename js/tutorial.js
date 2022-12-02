@@ -29,7 +29,7 @@ window.addEventListener('load',() => {
         sequence = generateSeries(2,2);
         sequencer(1000,true);
     },true)
-    tutorial.addSubtitle('Over time, the grid size gets bigger. Click to continue',false,() => {createLvl(3,2*(2/3),true)});
+    tutorial.addSubtitle('Over time, the grid size gets bigger. Click to continue',false,() => {createLvl(3,2,true)});
     tutorial.addSubtitle(null,true,() => {
         sequence = generateSeries(3,2);
         sequencer(1000,true);

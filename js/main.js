@@ -123,7 +123,7 @@ var highscore = 0;
 var lvls = { //l<Level Number>: {width: <width>, size: <tile width>, num: <select num>, int: <interval>}
     default: {
         width:2,
-        size:2.5,
+        size:1,
         num:2,
         int:950
     }
@@ -153,12 +153,8 @@ function advanceLvl () {
         }
 
         data.width+=Math.floor((lvl+1)/5);
-        data.size*=lvls.default.width/data.width;
-        if (data.size < 0.25) {
-            data.size = 0.25;
-        }
 
-        data.num+=Math.floor((lvl+1)/8);
+        data.num+=Math.floor((lvl)/5); //normally lvl+1, but want to come in 1 latter
     }
     createLvl(data.width,data.size);
 

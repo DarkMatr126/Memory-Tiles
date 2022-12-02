@@ -11,25 +11,43 @@ function setTileSize (size) {
 }
 
 function createLvl (width,size,tutorialLvl = false) {
-    setTileSize(size);
     removeTiles();
 
-    var center = width/2;
+    size*=2/width*2;
+    if (size < 0.1) {
+        size = 0.1;
+    }
+    setTileSize(size);
+
+
+    var marginFrac = 10; //size/margin
+    var margin = size/marginFrac;
+    var totSize = width*size+(width-1)*margin;
+    var centerTile = width/2; //actually Math.ciel(<math>)-1 because of arrays; same as Math.floor();
+    /*
+    full tile offset = distance from center tile * size
+    */
 
     var tilesDiv = document.getElementById('tiles');
 
     for (let y = 0; y < width; y++) {
-        var deviationY = y-center;
+        var difY = y-centerTile;
+        var offY = difY*size; //in inches
+        var marOffY = (difY+0.5)*size/marginFrac;
 
         var rowArr = [];
 
-        for (let x = 0; x < width; x++) {
-            var deviationX = x-center;
+        for (let x = 0; x < width; x++) {            
+            var difX = x-centerTile;
+            var offX = difX*size; //in inches
+            var marOffX = (difX+0.5)*size/marginFrac;
 
             var tile = document.createElement('div');
             tile.setAttribute('class','tile');
-            tile.style.left = `calc(50% + ${deviationX*tileSize}in + ${deviationX*5*tileSize}px)`;
-            tile.style.top = `calc(50% + ${deviationY*tileSize}in + ${deviationY*5*tileSize}px)`;
+
+            tile.style.left = `calc(50% + ${offX}in + ${marOffX}in)`
+            tile.style.top = `calc(50% + ${offY}in + ${marOffY}in)`
+
             if (!tutorialLvl) {
                 tile.setAttribute('onclick',`clickTile(${x},${y})`);
                 tilesDiv.append(tile);
