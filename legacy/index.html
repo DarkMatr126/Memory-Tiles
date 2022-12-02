@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Memory Tiles (Legacy)</title>
+        <script src="javascript.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    </head>
+    <body>
+        <p id="credits">2021 © Niko Wolf</p>
+        <div id="about" style="display: none;">
+            <p id="abtTxt">This game was developed by Niko Wolf over the course of about 2 weeks in 2021.</p>
+            <br>
+            <p id="fontCredit">Fonts were made by font space users <a target="_blank" href="https://www.fontspace.com/marsnev" class="link" >marsnev</a> and <a class="link" href="https://www.fontspace.com/niskala-huruf" target="_blank">Niskala Huruf</a>.</p>
+        </div>
+        <div id="start">
+            <p id="title">Memory Tiles</p>
+            <a id="startBtn" onclick="start()">START</a>
+            <a id="aboutBtn" onclick="about()">ABOUT</a>
+        </div>
+        <a id="restartBtn" onclick="restart()">Menu</a>
+        <div id="UI" style="display: none;">
+            <a id="lvlIndc" class="UI transparent">Level 1</a>
+            <a id="scoreLbl" class="UI transparent">Score:</a>
+            <a id="score" class="UI transparent">0</a>
+         	<a id="highscoreLbl" class="UI transparent">Highscore:</a>
+            <a id="highscore" class="UI transparent">0</a>
+        </div>
+        <div id="lvl1" style="display:none;">
+            <a onclick="lvl1()" class="RandBtn">Randomize</a>
+            <a class="box box0of4" id="1box0" onclick="isCor1('1box0')"></a>
+            <a class="box box1of4" id="1box1" onclick="isCor1('1box1')"></a>
+            <a class="box box2of4" id="1box2" onclick="isCor1('1box2')"></a>
+            <a class="box box3of4" id="1box3" onclick="isCor1('1box3')"></a>
+        </div>
+        <div id="lvl2" style="display: none;">
+            <a onclick="lvl2()" class="RandBtn">Randomize</a>
+            <a class="box box0of4" id="2box0" onclick="isCor2('2box0')"></a>
+            <a class="box box1of4" id="2box1" onclick="isCor2('2box1')"></a>
+            <a class="box box2of4" id="2box2" onclick="isCor2('2box2')"></a>
+            <a class="box box3of4" id="2box3" onclick="isCor2('2box3')"></a>
+        </div>
+        <div id="lvl3" style="display: none;">
+            <a onclick="lvl3()" class="RandBtn">Randomize</a>
+            <a class="box box0of9" id="3box0" onclick="isCor3('3box0')"></a>
+            <a class="box box1of9" id="3box1" onclick="isCor3('3box1')"></a>
+            <a class="box box2of9" id="3box2" onclick="isCor3('3box2')"></a>
+            <a class="box box3of9" id="3box3" onclick="isCor3('3box3')"></a>
+            <a class="box box4of9" id="3box4" onclick="isCor3('3box4')"></a>
+            <a class="box box5of9" id="3box5" onclick="isCor3('3box5')"></a>
+            <a class="box box6of9" id="3box6" onclick="isCor3('3box6')"></a>
+            <a class="box box7of9" id="3box7" onclick="isCor3('3box7')"></a>
+            <a class="box box8of9" id="3box8" onclick="isCor3('3box8')"></a>
+        </div>
+        <div id="lvl4" style="display: none;">
+            <a onclick="lvl4()" class="RandBtn">Randomize</a>
+            <a class="box box0of9" id="4box0" onclick="isCor4('4box0')"></a>
+            <a class="box box1of9" id="4box1" onclick="isCor4('4box1')"></a>
+            <a class="box box2of9" id="4box2" onclick="isCor4('4box2')"></a>
+            <a class="box box3of9" id="4box3" onclick="isCor4('4box3')"></a>
+            <a class="box box4of9" id="4box4" onclick="isCor4('4box4')"></a>
+            <a class="box box5of9" id="4box5" onclick="isCor4('4box5')"></a>
+            <a class="box box6of9" id="4box6" onclick="isCor4('4box6')"></a>
+            <a class="box box7of9" id="4box7" onclick="isCor4('4box7')"></a>
+            <a class="box box8of9" id="4box8" onclick="isCor4('4box8')"></a>
+        </div>
+        <div id="lvl5" style="display: none;">
+            <a onclick="lvl5()" class="RandBtn">Randomize</a>
+            <a class="box box0of9" id="5box0" onclick="isCor5('5box0')"></a>
+            <a class="box box1of9" id="5box1" onclick="isCor5('5box1')"></a>
+            <a class="box box2of9" id="5box2" onclick="isCor5('5box2')"></a>
+            <a class="box box3of9" id="5box3" onclick="isCor5('5box3')"></a>
+            <a class="box box4of9" id="5box4" onclick="isCor5('5box4')"></a>
+            <a class="box box5of9" id="5box5" onclick="isCor5('5box5')"></a>
+            <a class="box box6of9" id="5box6" onclick="isCor5('5box6')"></a>
+            <a class="box box7of9" id="5box7" onclick="isCor5('5box7')"></a>
+            <a class="box box8of9" id="5box8" onclick="isCor5('5box8')"></a> 
+        </div>
+        <div id="lvl6" style="display: none;">
+            <a onclick="lvl6()" class="RandBtn">Randomize</a>
+            <a class="box box0of9" id="6box0" onclick="isCor6('6box0')"></a>
+            <a class="box box1of9" id="6box1" onclick="isCor6('6box1')"></a>
+            <a class="box box2of9" id="6box2" onclick="isCor6('6box2')"></a>
+            <a class="box box3of9" id="6box3" onclick="isCor6('6box3')"></a>
+            <a class="box box4of9" id="6box4" onclick="isCor6('6box4')"></a>
+            <a class="box box5of9" id="6box5" onclick="isCor6('6box5')"></a>
+            <a class="box box6of9" id="6box6" onclick="isCor6('6box6')"></a>
+            <a class="box box7of9" id="6box7" onclick="isCor6('6box7')"></a>
+            <a class="box box8of9" id="6box8" onclick="isCor6('6box8')"></a>
+        </div>
+        <div id="cursors">
+            <img style="display: none;" src="./images/cursor.png" id="cursor" class="cursor">
+            <img style="display: none;" src="./images/cursor_click.png" id="cursor_click" class="cursor">
+        </div>
+    </body>
+</html>
+
+<!--Copyrights: Niko Wolf-->

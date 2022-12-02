@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Memory Tiles</title>
+
+        <link rel="shortcut icon" href="./images/favicon/0.svg" type="image/x-icon" id="favicon">
+
+        <link rel="stylesheet" href="./css/main.css">
+        <link rel="stylesheet" href="./css/tutorial.css">
+
+        <script src="./js/level_loader.js"></script>
+        <script src="./js/main.js"></script>
+        <script src="./js/tutorial.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=0.5">
+
+        <link rel="preload" as="font" href="./css/fonts/aquire-font.zip">
+
+        <script> // animate favicon
+            var favState = 4;
+            var favsTaken = [];
+            function favicon () {
+                favState++;
+                if (favState > 4) {
+                    favState = 0;
+                }
+
+                var index = randomFav();
+
+                document.getElementById('favicon').setAttribute('href',`./images/favicon/${index}.svg`);
+
+                if (favState === 0) {
+                    setTimeout(() => {
+                        favicon();
+                    }, 3000);
+                } else {
+                    setTimeout(() => {
+                        favicon();
+                    }, 1000);
+                }
+            }
+            function randomFav() {
+                if (favState === 0) {
+                    favsTaken = [];
+                    return 0;
+                }
+                var rand = Math.ceil(Math.random() * 4);
+                if (favsTaken.indexOf(rand) === -1) {
+                    favsTaken.push(rand);
+                    return rand;
+                }
+                return randomFav();
+            }
+            window.addEventListener('load',() => {
+                favicon();
+            })
+        </script>
+    </head>
+    <body>
+        <div id="startMenu">
+            <a id="title">Memory Tiles</a>
+            <button id="start" onclick="start()">Play</button>
+            <button id="stats" onclick="stats()">Stats</button>
+            <button id="tutBtn" onclick="tutorial.start()">Tutorial</button>
+            <button id="creditsBtn" onclick="credits()">Credits</button>
+        </div>
+        <div id="game" style="display: none;">
+            <div id="tiles"></div>
+            <div id="data">
+                <a id="score">0</a>
+                <a id="lvl">Level:0</a>
+                <a id="highscore">Highscore:0</a>
+            </div>
+        </div>
+        <div id="statsMenu" style="display:none;">
+            <a class="title">Stats</a>
+            <div class="data">
+                <a class="highscore">Highscore: 0</a><br>
+                <a class="maxLvl">Max Level: 0</a><br>
+                <a class="attempts">Attemps: 0</a><br>
+                <a class="averageScore">Average Score: 0</a>
+            </div>
+        </div>
+        <div id="credits" style="display:none;">
+            <a class="title">Credits</a>
+            <p class="about p">This is a remaster of my first ever Javascript game, Memory Tiles, remade in 2022. I wanted to keep original premise, while reworking everything  from scratch. The original was hard coded, and broke after level 6 or 7 because of that hard coding. Now, you can add levels as easily as adding an object to a variable. The design is also a lot sleeker, and you can now see your stats.<br><a target="_blank" class="link" href="https://darkmatr126.github.io/memory-tiles/legacy/">Here</a> is the legacy/original version if you want to play it for some reason.</p>
+            <p class="other p">Font from <a target="_blank" class="link" href="https://www.fontspace.com/aquire-font-f43735">here</a></p>
+            <a class="copyright p">Niko Wolf © 2022</a>
+        </div>
+        <div id="tutorial">
+            <div id="tutTiles"></div>
+            <div class="messages"></div>
+            <div class="subtitles"></div>
+        </div>
+        <div id="screens">
+            <div id="gameover" style="display: none;">
+                <a>Game Over</a>
+                <div class="stats">
+                    <a class="score">Score: 0</a><br>
+                    <a class="highscore">Highscore: 0</a><br>
+                    <a class="level">Level: 0</a><br>
+                    <a class="newHighscore" style="display: none;">New Highscore!</a>
+                </div>
+                <button class="restart" onclick="restart()">Restart</button><br>
+                <button class="home" onclick="back()">Home</button>
+            </div>
+            <div id="nextLevel" style="display: none;">
+                <p>Level Complete</p>
+                <button onclick="advanceLvl();document.getElementById('nextLevel').style.display = 'none'; paused = false;">Next</button>
+            </div>
+            <div id="tutComplete" style="display: none;">
+                <p>Tutorial Complete</p>
+                <button onclick="tutorial.complete();">Exit</button>
+            </div>
+        </div>
+        <button id="back" onclick="back()" style="display:none;">Back</button>
+    </body>
+</html>  </body>
+</html>
