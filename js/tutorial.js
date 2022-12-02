@@ -22,14 +22,14 @@ The number of selected tiles will also grow, and will play faster
 */
 
 window.addEventListener('load',() => {
-    tutorial.addSubtitle('These are tiles. Click one',false,() => {createLvl(2,2,true)});
+    tutorial.addSubtitle('These are tiles. Click one',false,() => {createLvl(2,1,true)});
     tutorial.addSubtitle('Good. Next up are sequences. Clicked a tile to continue',false);
     tutorial.addSubtitle('Every level, a series of tiles will turn green. After they are done playing, repeat the pattern. You cannot start before the sequence ends. Click to continue',false);
     tutorial.addSubtitle(null,true,() => {
         sequence = generateSeries(2,2);
         sequencer(1000,true);
     },true)
-    tutorial.addSubtitle('Over time, the grid size gets bigger. Click to continue',false,() => {createLvl(3,2,true)});
+    tutorial.addSubtitle('Over time, the grid size gets bigger. Click to continue',false,() => {createLvl(3,1,true)});
     tutorial.addSubtitle(null,true,() => {
         sequence = generateSeries(3,2);
         sequencer(1000,true);
