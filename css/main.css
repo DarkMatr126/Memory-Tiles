@@ -30,7 +30,7 @@ body {
     --tileClicked: #888;
     --tileClickedBad: orange;
 
-    --menuBtnStart: 43%;
+    --menuBtnStart: 39%;
     --menuBtnOffset: 1.3in;
 }
 
@@ -80,7 +80,7 @@ body {
     transform: translate(-50%,-50%);
 
     left:50%;
-    top:25%;
+    top:18%;
 
     width:100%;
 
